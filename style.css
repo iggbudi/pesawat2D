@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top, #111d34 0%, #050912 60%, #020305 100%);
+    color: #f5f8ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-shell {
+    width: 520px;
+    max-width: 90vw;
+    background: rgba(13, 25, 46, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hud-item {
+    letter-spacing: 0.5px;
+}
+
+.game-area {
+    position: relative;
+    width: 480px;
+    height: 640px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: url('galaxybackground.jpg') center/cover no-repeat;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.player {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    margin-left: 0;
+    background-image: url('pesawat.piupiu-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.bullet {
+    position: absolute;
+    width: 6px;
+    height: 16px;
+    background: #f8d047;
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(248, 208, 71, 0.9);
+}
+
+.enemy {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    background-image: url('moonnster_hijau-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.controls {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: rgba(245, 248, 255, 0.85);
+}
