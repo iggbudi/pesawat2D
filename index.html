@@ -15,9 +15,15 @@
         <section id="gameArea" class="game-area">
             <div id="player" class="player"></div>
             <div id="message" class="message hidden">Tekan Spasi untuk mulai</div>
+            <div id="pauseOverlay" class="pause-overlay hidden">
+                <div class="pause-content">
+                    <h2>PAUSE</h2>
+                    <p>Tekan P atau ESC untuk melanjutkan</p>
+                </div>
+            </div>
         </section>
         <footer class="controls">
-            Gerakkan mouse untuk memindahkan pesawat, tekan Spasi untuk menembak.
+            Gerakkan mouse untuk memindahkan pesawat, tekan Spasi untuk menembak, tekan P atau ESC untuk pause.
         </footer>
     </main>
     <audio id="shootSound" src="shoot.m4a" preload="auto"></audio>

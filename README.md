@@ -22,6 +22,7 @@ Gim penembak pesawat 2D bergaya fixed shooter yang dibuat dengan HTML, CSS, dan 
 
 - **Gerakkan pesawat:** geser kursor mouse secara horizontal; pesawat akan mengikuti posisi mouse.
 - **Tembak:** tekan `Spasi`. Peluru akan menembak lurus ke atas.
+- **Pause/Resume:** tekan `P` atau `ESC` untuk jeda atau melanjutkan permainan.
 - **Mulai ulang:** ketika game selesai, tekan `Spasi` lagi.
 
 ## Mekanik & Audio
@@ -29,6 +30,7 @@ Gim penembak pesawat 2D bergaya fixed shooter yang dibuat dengan HTML, CSS, dan 
 - Peluru yang mengenai musuh memberikan skor +10 dan memicu suara ledakan.
 - Musuh yang mencapai dasar layar mengurangi nyawa pemain.
 - Ketika permainan dimulai, musik latar diputar otomatis dan berhenti saat game berakhir.
+- Saat game dijeda (pause), musik latar akan berhenti sementara dan melanjutkan ketika game dilanjutkan (resume).
 
 ## Kustomisasi
 

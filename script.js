@@ -24,6 +24,7 @@ const state = {
     score: 0,
     lives: 3,
     running: false,
+    paused: false,
 };
 
 function resetGame() {
@@ -35,13 +36,32 @@ function resetGame() {
     state.score = 0;
     state.lives = 3;
     state.lastSpawn = 0;
+    state.paused = false;
     scoreEl.textContent = '0';
     livesEl.textContent = '3';
     messageEl.textContent = 'Tekan Spasi untuk mulai';
     messageEl.classList.remove('hidden');
+    const pauseOverlay = document.getElementById('pauseOverlay');
+    if (pauseOverlay) pauseOverlay.classList.add('hidden');
     if (bgmAudio) {
         bgmAudio.pause();
         bgmAudio.currentTime = 0;
+    }
+}
+
+function togglePause() {
+    if (!state.running) return;
+
+    state.paused = !state.paused;
+    const pauseOverlay = document.getElementById('pauseOverlay');
+
+    if (state.paused) {
+        if (pauseOverlay) pauseOverlay.classList.remove('hidden');
+        if (bgmAudio) bgmAudio.pause();
+    } else {
+        if (pauseOverlay) pauseOverlay.classList.add('hidden');
+        if (bgmAudio) bgmAudio.play();
+        state.lastSpawn = performance.now(); // Reset spawn timer to avoid instant spawn
     }
 }
 
@@ -164,11 +184,16 @@ function startGameLoop() {
     let lastTime = performance.now();
     function loop(time) {
         if (!state.running) return;
-        lastTime = time;
-        updatePlayer();
-        updateBullets();
-        updateEnemies();
-        checkCollisions();
+
+        // Skip game logic updates if paused, but keep the loop running
+        if (!state.paused) {
+            lastTime = time;
+            updatePlayer();
+            updateBullets();
+            updateEnemies();
+            checkCollisions();
+        }
+
         requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
@@ -180,11 +205,16 @@ function handleKeyDown(e) {
         if (!state.running) {
             resetGame();
             startGameLoop();
-        }
-        if (!state.spacePressed) {
+        } else if (!state.paused && !state.spacePressed) {
             shootBullet();
             state.spacePressed = true;
         }
+    }
+
+    // Toggle pause with 'P' key or 'Escape' key
+    if (e.code === 'KeyP' || e.code === 'Escape') {
+        e.preventDefault();
+        togglePause();
     }
 }
 
