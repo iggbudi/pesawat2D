@@ -180,10 +180,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-.hidden {
-    display: none;
-}
-
 .controls {
     margin-top: 12px;
     text-align: center;
@@ -227,4 +223,9 @@ body {
     font-size: 1.1rem;
     color: rgba(245, 248, 255, 0.9);
     letter-spacing: 0.5px;
+}
+
+/* Hidden class must be defined LAST to override other display properties */
+.hidden {
+    display: none !important;
 }
